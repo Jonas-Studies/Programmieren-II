@@ -17,5 +17,11 @@ public abstract class Abrechnung {
 	}
 	
 	public abstract double getVerdienst ();
+	
+	public String toString () {
+		String result = "PeriodenNr: " + this.getPeriode() + ", Name: " + this.getMitarbeiter().getName() + ", Verdienst: " + this.getVerdienst();
+		
+		return result;
+	};
 
 }

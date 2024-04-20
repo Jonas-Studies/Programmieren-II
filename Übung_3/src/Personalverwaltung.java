@@ -1,6 +1,7 @@
 
 public class Personalverwaltung {
 	private Mitarbeiterliste mitarbeiterliste = new Mitarbeiterliste(10);
+	private Abrechnungsliste abrechnungsliste = new Abrechnungsliste(10);
 	
 	public void addMitarbeiter (Mitarbeiter mitarbeiterToAdd) {
 		this.mitarbeiterliste.addMitarbeiter(mitarbeiterToAdd);
@@ -8,6 +9,10 @@ public class Personalverwaltung {
 	
 	public void removeMitarbeiter (Mitarbeiter mitarbeiterToRemove) {
 		this.mitarbeiterliste.removeMitarbeiter(mitarbeiterToRemove);
+	}
+	
+	public void addAbrechnung (Abrechnung abrechnungToAdd) {
+		this.abrechnungsliste.addAbrechnung(abrechnungToAdd);
 	}
 
 	public void listMitarbeiter () {
@@ -27,6 +32,22 @@ public class Personalverwaltung {
 				if (currentMitarbeiter.istKleiner(nextMitarbeiter) == false) {
 					this.mitarbeiterliste.swapMitarbeiterByPosition(mitarbeiterNr, mitarbeiterNr + 1);
 				}
+			}
+		}
+		
+		return;
+	}
+	
+	public void listAbrechnungenByPeriode (Integer periode) {
+		Integer currentNumberOfAbrechnungen = this.abrechnungsliste.getNumberOfAbrechnungen();
+		
+		System.out.println("Abrechnungen:");
+		
+		for (Integer currentPosition = 0; currentPosition < currentNumberOfAbrechnungen; currentPosition += 1) {
+			Abrechnung currentAbrechnung = this.abrechnungsliste.getAbrechnungByPosition(currentPosition);
+			
+			if (currentAbrechnung.getPeriode() == periode) {
+				System.out.println(" - " + this.abrechnungsliste.getAbrechnungByPosition(currentPosition));
 			}
 		}
 		
