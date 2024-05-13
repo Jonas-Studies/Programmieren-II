@@ -145,7 +145,9 @@ class KundenAuswahlFrame extends JFrame {
 					
 					this.addActionListener(new ActionListener () {
 						public void actionPerformed(ActionEvent event) {
-							editSelectedKunde();
+							if (kundenTable.kundenSelectionModel.isSelectionEmpty() == false) {
+								editSelectedKunde();
+							}
 						}
 					});
 				}
