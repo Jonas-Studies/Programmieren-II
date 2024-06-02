@@ -31,14 +31,20 @@ public class Mitarbeiterliste {
 	}
 	
 	public Boolean addMitarbeiter (Mitarbeiter mitarbeiterToAdd) {
-		Boolean result = false;
+		Boolean result = true;
 		
-		if (this.getNumberOfUsedElements() < this.getSize()) {
-			this.mitarbeiter[getNumberOfUsedElements()] = mitarbeiterToAdd;
-			this.incrementNumberOfUsedElements();
+		if (this.getNumberOfUsedElements() >= this.getSize()) {
+			Mitarbeiter newMitarbeiterListe [] = new Mitarbeiter [this.getSize() * 2];
 			
-			result = true;
+			for (int index_of_mitarbeiter = 0; index_of_mitarbeiter < this.getNumberOfUsedElements(); index_of_mitarbeiter += 1) {
+				newMitarbeiterListe[index_of_mitarbeiter] = this.mitarbeiter[index_of_mitarbeiter];
+			}
+			
+			this.mitarbeiter = newMitarbeiterListe;
 		}
+		
+		this.mitarbeiter[getNumberOfUsedElements()] = mitarbeiterToAdd;
+		this.incrementNumberOfUsedElements();
 		
 		return result;
 	}
